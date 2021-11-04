@@ -1,10 +1,14 @@
 <template>
-  <button class="btn btn-primary" @click="selectType" ref="loadMore">Load More</button>
-  <button class="btn" @click="selectType" ref="pagination">Pagination</button>
+  <div class="title">
+        <p>Switch between Load More and Pagination here:</p>
+        <button class="btn btn-primary" @click="selectType" ref="loadMore">Load More</button>
+        <button class="btn" @click="selectType" ref="pagination">Pagination</button>
+  </div>
   <div v-if="isLoadMore" class="list-container">
     <ul id="example-1">
-      <li v-for="item in pokemonList" :key="item.name">
+      <li v-for="(item, index) in pokemonList" :key="item.name">
         <img :src=item.sprites.front_shiny alt="">
+        <p>Item: {{index + 1}}</p>
         <p>Name: {{ item.species.name }}</p>
         <p>Weight: {{ item.weight }}</p>
         <p>Height: {{ item.height }}</p>
@@ -13,8 +17,9 @@
   </div>
   <div v-if="isPagination" class="list-container">
     <ul id="example-1">
-      <li v-for="item in displayedItems" :key="item.name">
+      <li v-for="(item, index) in displayedItems" :key="item.name">
         <img :src=item.sprites.front_shiny alt="">
+        <p>Item: {{index + 1}}</p>
         <p>Name: {{ item.species.name }}</p>
         <p>Weight: {{ item.weight }}</p>
         <p>Height: {{ item.height }}</p>
@@ -164,36 +169,44 @@ export default {
 </script>
 
 <style scoped>
+p {
+    margin: 0;
+    margin-bottom: 5px;
+}
     .navigation {
         margin-bottom: 30px;
     }
     .list-container ul {
-    list-style-type: none;
-    display: inline-flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+        list-style-type: none;
+        display: inline-flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
     .list-container ul li {
-    font-size: 14px;
-    padding-bottom: 20px;
-    height: 200px;
-    text-align: center;
-    background-color: #fff;
-    width: 250px;
-    margin: 10px 10px 20px;
-    box-shadow: 0px 0px 6px -2px rgb(20 72 62);
-    cursor: pointer;
-    transition: all ease-in-out 0.3s;
+        font-size: 14px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        height: 100px;
+        text-align: center;
+        background-color: #fff;
+        width: 250px;
+        margin: 10px 10px 20px;
+        box-shadow: 0px 0px 6px -2px rgb(20 72 62);
+        cursor: pointer;
+        transition: all ease-in-out 0.3s;
+        text-align: right;
+        padding-right: 20px;
     }
     .list-container ul li img {
         transition: all ease-in-out 0.3s;
+        float: left;
     }
     .list-container ul li:hover {
         box-shadow: 0px 0px 21px -7px rgb(20 72 62);
     }
     .list-container ul li:hover img {
-        transform: scale(1.5);
+        transform: scale(1.3);
     }
     .disabled {
         opacity: 0.5;
