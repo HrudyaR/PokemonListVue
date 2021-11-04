@@ -15,8 +15,8 @@ npm run serve
 npm run build
 ```
 
-### Deployed in Heroku
-See [Demo](https://pokemon-list-vue.herokuapp.com/)
+### Deployed in Heroku (Please turn off any vpn connected)
+See [Demo here](https://pokemon-list-vue.herokuapp.com/)
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
